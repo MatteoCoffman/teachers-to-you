@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 
+import { Reveal } from "@/components/motion/reveal";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { FaqSection } from "@/components/sections/faq";
+import { Hero } from "@/components/sections/hero";
 
 export const metadata: Metadata = {
   title: "Policies",
@@ -12,18 +14,18 @@ export const metadata: Metadata = {
 export default function PoliciesPage() {
   return (
     <>
-      <section className="border-b border-border/60 bg-secondary/30">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <h1 className="text-4xl font-semibold">Policies</h1>
-          <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-            Everything you need to know before booking. Full cancellation policy
-            details are being finalized — contact us if you have questions.
-          </p>
-        </div>
-      </section>
+      <Hero
+        compact
+        title="Policies"
+        subtitle="Everything you need to know before booking. Full cancellation policy details are being finalized — contact us if you have questions."
+        primaryCta={{ href: "/book", label: "Book a Lesson" }}
+        secondaryCta={{ href: "https://instagram.com/teacherstoyouatx", label: "Contact Us" }}
+      />
 
-      <section className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
-        <FaqSection />
+      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+        <Reveal>
+          <FaqSection />
+        </Reveal>
       </section>
 
       <CtaBanner

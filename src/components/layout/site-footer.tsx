@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { Reveal } from "@/components/motion/reveal";
+
 function InstagramIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -22,32 +24,35 @@ function InstagramIcon({ className }: { className?: string }) {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/60 bg-secondary/40">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between">
-        <div>
+    <footer className="relative border-t border-border/60 bg-secondary/40">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 md:flex-row md:items-center md:justify-between">
+        <Reveal>
           <p className="font-heading text-lg font-semibold">Teachers To You</p>
           <p className="mt-1 text-sm text-muted-foreground">
             In-person guitar & bass lessons in Austin, TX
           </p>
-        </div>
+        </Reveal>
 
-        <div className="flex flex-col gap-2 text-sm text-muted-foreground sm:flex-row sm:items-center sm:gap-6">
-          <Link href="/book" className="hover:text-foreground">
-            Book a lesson
-          </Link>
-          <Link href="/packages" className="hover:text-foreground">
-            4-week packages
-          </Link>
-          <a
-            href="https://instagram.com/teacherstoyouatx"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 hover:text-foreground"
-          >
-            <InstagramIcon className="size-4" />
-            @teacherstoyouatx
-          </a>
-        </div>
+        <Reveal delay={0.1}>
+          <div className="flex flex-col gap-3 text-sm text-muted-foreground sm:flex-row sm:items-center sm:gap-8">
+            <Link href="/book" className="transition-colors hover:text-foreground">
+              Book a lesson
+            </Link>
+            <Link href="/packages" className="transition-colors hover:text-foreground">
+              4-week packages
+            </Link>
+            <a
+              href="https://instagram.com/teacherstoyouatx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+            >
+              <InstagramIcon className="size-4" />
+              @teacherstoyouatx
+            </a>
+          </div>
+        </Reveal>
       </div>
     </footer>
   );
