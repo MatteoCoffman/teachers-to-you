@@ -76,7 +76,7 @@ function PricingCard({ tier }: { tier: PricingTier }) {
   );
 }
 
-export function PricingCards() {
+export function PricingCards({ staticLayout = false }: { staticLayout?: boolean }) {
   const tiers: PricingTier[] = [
     {
       icon: Music,
@@ -135,7 +135,15 @@ export function PricingCards() {
     },
   ];
 
-  return (
+  return staticLayout ? (
+    <div className="grid gap-6 md:grid-cols-3">
+      {tiers.map((tier) => (
+        <div key={tier.title} className="h-full">
+          <PricingCard tier={tier} />
+        </div>
+      ))}
+    </div>
+  ) : (
     <Stagger className="grid gap-6 md:grid-cols-3">
       {tiers.map((tier) => (
         <StaggerItem key={tier.title} className="h-full">

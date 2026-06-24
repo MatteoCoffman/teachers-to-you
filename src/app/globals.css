@@ -140,4 +140,22 @@
   .hero-mesh {
     animation: none;
   }
+
+  html.home-snap-scroll {
+    scroll-snap-type: none;
+  }
+}
+
+html.home-snap-scroll {
+  scroll-snap-type: y proximity;
+}
+
+html.home-snap-scroll .home-snap-panel {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+/* Let the page scroll freely onto the footer after the last snap section */
+html.home-snap-scroll footer {
+  scroll-snap-align: none;
 }

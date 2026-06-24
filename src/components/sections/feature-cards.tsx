@@ -58,7 +58,19 @@ function FeatureCard({
   );
 }
 
-export function FeatureCards() {
+export function FeatureCards({ staticLayout = false }: { staticLayout?: boolean }) {
+  const grid = (
+    <>
+      {features.map((feature) => (
+        <FeatureCard key={feature.title} {...feature} />
+      ))}
+    </>
+  );
+
+  if (staticLayout) {
+    return <div className="grid gap-6 md:grid-cols-3">{grid}</div>;
+  }
+
   return (
     <Stagger className="grid gap-6 md:grid-cols-3">
       {features.map((feature) => (
