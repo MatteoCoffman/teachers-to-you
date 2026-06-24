@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300" role="img" aria-label="Placeholder photo">
+  <rect width="400" height="300" fill="#ddd4c4"/>
+  <circle cx="200" cy="110" r="50" fill="#b8a07a"/>
+  <ellipse cx="200" cy="230" rx="80" ry="60" fill="#b8a07a"/>
+  <text x="200" y="285" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#6b5f4a">Jack</text>
+</svg>

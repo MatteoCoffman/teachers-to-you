@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300" role="img" aria-label="Placeholder photo">
+  <rect width="400" height="300" fill="#e0ddd6"/>
+  <circle cx="200" cy="110" r="50" fill="#a89b8c"/>
+  <ellipse cx="200" cy="230" rx="80" ry="60" fill="#a89b8c"/>
+  <text x="200" y="285" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#5a5248">Matteo Coffman</text>
+</svg>

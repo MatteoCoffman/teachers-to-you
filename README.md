@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Teachers To You
 
-## Getting Started
+Custom marketing and booking site for [Teachers To You](https://instagram.com/teacherstoyouatx) — in-person guitar and bass lessons in Austin, TX.
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router, TypeScript)
+- **Tailwind CSS v4** + **shadcn/ui**
+- **Square** — embed widgets for single lessons, Bookings API for 4-week packages
+- **Vercel Hobby** hosting
+
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+  app/              # Pages and API routes
+  components/       # UI, layout, booking flows
+  data/teachers.ts  # Teacher bios, photos, Square config
+  lib/              # Pricing, Square client, travel distance
+```
 
-## Learn More
+## Square setup
 
-To learn more about Next.js, take a look at the following resources:
+1. Get Dashboard access from Mason
+2. Create a Square application and obtain access token + location ID
+3. Copy Advanced Widget embed URLs into `squareEmbedUrl` per teacher in `src/data/teachers.ts`
+4. Set team member IDs and service variation IDs in `.env.local`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Without Square credentials, the site runs in demo mode with placeholder booking widgets and mock availability.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Travel fees
 
-## Deploy on Vercel
+When a student chooses "At my location," the server calculates drive time from the teacher's base address (stored server-side in `teachers.ts`, never shown on the frontend). A $10/lesson travel fee applies if the drive is over 15 minutes.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Optional: set `OPENROUTESERVICE_API_KEY` for accurate drive times. Without it, a distance estimate is used.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy to Vercel
+
+```bash
+npx vercel
+```
+
+1. Import the repo on [vercel.com](https://vercel.com)
+2. Add environment variables from `.env.example`
+3. Connect custom domain (e.g. `teacherstoyou.com`) in Project Settings → Domains
+
+## Pages
+
+| Route | Description |
+|---|---|
+| `/` | Home |
+| `/about` | About the studio |
+| `/teachers` | Teacher directory |
+| `/teachers/[slug]` | Teacher profile + booking |
+| `/lessons` | Pricing & travel policy |
+| `/packages` | 4-week package booking |
+| `/book` | Single lesson booking |
+| `/policies` | FAQ & policies |
+
+## Maintenance
+
+Edit teacher bios, photos, and pricing in `src/data/teachers.ts` and `src/lib/pricing.ts`, then redeploy. No admin dashboard.
