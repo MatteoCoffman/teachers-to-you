@@ -11,18 +11,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getSquareBookingEmbedUrl } from "@/lib/square/embed";
 
 type SquareBookingEmbedProps = {
-  teacherName: string;
-  embedUrl?: string;
   travelNote?: string;
 };
 
-export function SquareBookingEmbed({
-  teacherName,
-  embedUrl,
-  travelNote,
-}: SquareBookingEmbedProps) {
+export function SquareBookingEmbed({ travelNote }: SquareBookingEmbedProps) {
+  const embedUrl = getSquareBookingEmbedUrl();
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -50,8 +46,8 @@ export function SquareBookingEmbed({
             Square booking widget
           </CardTitle>
           <CardDescription>
-            The Square Advanced Widget for {teacherName} will appear here once
-            Mason grants Dashboard access and embed URLs are configured.
+            The Square booking widget will appear here once the embed URL is
+            configured.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -61,9 +57,10 @@ export function SquareBookingEmbed({
             </p>
           )}
           <p className="text-sm text-muted-foreground">
-            Set <code className="rounded bg-muted px-1">squareEmbedUrl</code> in{" "}
-            <code className="rounded bg-muted px-1">src/data/teachers.ts</code> or
-            configure Square environment variables to enable live booking.
+            Set{" "}
+            <code className="rounded bg-muted px-1">NEXT_PUBLIC_SQUARE_EMBED_URL</code>{" "}
+            or update{" "}
+            <code className="rounded bg-muted px-1">src/lib/square/embed.ts</code>.
           </p>
           <Button asChild variant="outline">
             <a

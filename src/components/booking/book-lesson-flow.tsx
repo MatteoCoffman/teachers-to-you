@@ -35,8 +35,6 @@ export function BookLessonFlow({
   const [driveTimeMinutes, setDriveTimeMinutes] = useState(0);
   const [step, setStep] = useState<"location" | "booking">("location");
 
-  const selectedTeacher = teachers.find((t) => t.slug === teacherSlug);
-
   const handleTravelResult = useCallback(
     (result: { travelApplies: boolean; driveTimeMinutes: number }) => {
       setTravelApplies(result.travelApplies);
@@ -97,11 +95,7 @@ export function BookLessonFlow({
             ← Change location
           </button>
 
-          <SquareBookingEmbed
-            teacherName={selectedTeacher?.name ?? "your teacher"}
-            embedUrl={selectedTeacher?.squareEmbedUrl}
-            travelNote={travelNote}
-          />
+          <SquareBookingEmbed travelNote={travelNote} />
         </div>
       )}
     </div>

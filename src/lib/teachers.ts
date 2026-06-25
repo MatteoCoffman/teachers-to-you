@@ -9,7 +9,6 @@ function toPublic(teacher: Teacher): TeacherPublic {
     instruments: teacher.instruments,
     bio: teacher.bio,
     photoUrl: teacher.photoUrl,
-    squareEmbedUrl: teacher.squareEmbedUrl,
     squareTeamMemberId: teacher.squareTeamMemberId,
   };
 }

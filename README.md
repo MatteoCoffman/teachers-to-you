@@ -31,12 +31,11 @@ src/
 
 ## Square setup
 
-1. Get Dashboard access from Mason
-2. Create a Square application and obtain access token + location ID
-3. Copy Advanced Widget embed URLs into `squareEmbedUrl` per teacher in `src/data/teachers.ts`
-4. Set team member IDs and service variation IDs in `.env.local`
+1. Enable online booking in Square Appointments → Online Booking → Channels
+2. Copy the Channels embed script URL into `src/lib/square/embed.ts` (or set `NEXT_PUBLIC_SQUARE_EMBED_URL`)
+3. For 4-week packages: create a Square Developer application and set API env vars + team member / service IDs in `.env.local`
 
-Without Square credentials, the site runs in demo mode with placeholder booking widgets and mock availability.
+Single-lesson booking uses the shared embed. Package booking needs Square API credentials; without them, `/packages` runs in demo mode.
 
 ## Travel fees
 

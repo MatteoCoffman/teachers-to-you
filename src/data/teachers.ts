@@ -6,8 +6,6 @@ export type Teacher = {
   instruments: string[];
   bio: string;
   photoUrl: string;
-  /** Square Advanced Widget embed URL — set when Mason grants Dashboard access */
-  squareEmbedUrl?: string;
   /** Square team member ID for Bookings API */
   squareTeamMemberId?: string;
   /** Server-only: used for travel-fee distance calculation. Never expose to client. */
